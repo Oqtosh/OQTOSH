@@ -3,7 +3,7 @@ import { projectId, publicAnonKey } from '/utils/supabase/info';
 import { Edit, Check, Trash2, Camera, Plus } from 'lucide-react';
 import { toast } from 'sonner';
 import { Toaster } from '@/app/components/ui/sonner';
-import logoImage from 'figma:asset/6fddec659eea772db97f9bef99905d011be0e052.png';
+import icon from "@/assets/logo.ico"
 
 interface MenuItem {
   n: string; // name
