@@ -95,7 +95,7 @@
                 <div id="category-filters" class="category-container justify-start md:justify-center"></div>
             </div>
             <h2 class="text-center text-3xl md:text-5xl font-bold mb-12 gold-text uppercase tracking-widest font-luxury">Menyu</h2>
-            <div id="food-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 mb-24"></div>
+            <div id="food-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 mb-24"></div>
         </main>
 
         <footer class="bg-black border-t border-white/5 py-16 px-4 text-center">
@@ -135,16 +135,13 @@
                     <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
                         <h3 class="text-xs font-bold mb-4 gold-text uppercase">Kategoriyalar</h3>
                         <div id="admin-categories-list" class="flex flex-wrap gap-2 mb-4"></div>
-                        <div class="flex gap-2">
-                            <input id="new-category-name" placeholder="Nomi..." class="admin-input flex-1 mt-0">
-                            <button onclick="addCategory()" class="gold-button px-6 py-2 rounded-xl font-bold text-xs">Qo'shish</button>
-                        </div>
+                        <div class="flex gap-2"><input id="new-category-name" placeholder="Nomi..." class="admin-input flex-1 mt-0"><button onclick="addCategory()" class="gold-button px-6 py-2 rounded-xl font-bold text-xs">Qo'shish</button></div>
                     </div>
                     <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
                         <h3 class="text-xs font-bold mb-6 gold-text uppercase">Yangi Taom Qo'shish</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
-                                <input id="food-name" placeholder="Nomi" class="admin-input">
+                                <input id="food-name" placeholder="Taom nomi" class="admin-input">
                                 <input id="food-price" placeholder="Narxi" class="admin-input">
                                 <select id="food-category" class="admin-input text-xs"></select>
                             </div>
@@ -205,11 +202,11 @@
             document.getElementById('loading-screen').style.display = 'none';
         });
 
-        window.secretClick = () => {
-            const now = Date.now();
-            if (now - lastClickTime < 1000) clickCount++; else clickCount = 1;
-            lastClickTime = now;
-            if (clickCount >= 5) { window.openModal('login-modal'); clickCount = 0; }
+        window.secretClick = function() {
+            const currentTime = new Date().getTime();
+            if (currentTime - lastClickTime < 1000) { clickCount++; } else { clickCount = 1; }
+            lastClickTime = currentTime;
+            if (clickCount >= 5) { openModal('login-modal'); clickCount = 0; }
         };
 
         window.openModal = (id) => document.getElementById(id).style.display = 'flex';
@@ -263,7 +260,7 @@
 
         window.setCategory = (cat) => { activeCategory = cat; renderMenu(); renderCategories(); };
 
-        window.renderMenu = () => {
+        const renderMenu = () => {
             const search = document.getElementById('search-input').value.toLowerCase();
             const container = document.getElementById('food-grid');
             let filtered = (window.data.menuItems || []).filter(item => {
@@ -273,10 +270,18 @@
             });
             container.innerHTML = filtered.map(item => `
                 <div class="food-card">
-                    <div class="h-52 relative"><img src="${item.image}" class="w-full h-full object-cover">
-                    <span class="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded-lg text-[9px] gold-text border border-gold/30 uppercase tracking-widest">${item.category}</span></div>
-                    <div class="p-6"><div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold gold-text font-luxury">${item.name}</h3>
-                    <div class="text-right"><span class="text-lg font-bold">${item.price}</span><p class="text-[8px] opacity-50 uppercase">so'm</p></div></div></div>
+                    <div class="aspect-[3/4] relative">
+                        <img src="${item.image}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-black/60 px-2 py-1 rounded-lg text-[8px] gold-text border border-gold/30 uppercase tracking-widest">${item.category}</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-sm font-bold gold-text font-luxury mb-1 truncate">${item.name}</h3>
+                        <div class="flex justify-between items-baseline">
+                            <span class="text-lg font-bold white">${item.price}</span>
+                            <span class="text-[8px] opacity-50 uppercase">so'm</span>
+                        </div>
+                    </div>
                 </div>
             `).join('');
         };
@@ -366,6 +371,8 @@
                 </div>
             `).join('');
         };
+
+        window.renderAll();
     </script>
 </body>
 </html>
