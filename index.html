@@ -13,88 +13,38 @@
             --deep-black: #000000;
             --card-bg: #080C0B;
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--deep-black);
-            color: #ffffff;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .header-gradient {
-            background: linear-gradient(180deg, var(--dark-green) 0%, var(--deep-black) 100%);
-            border-bottom: 1px solid rgba(197, 160, 33, 0.2);
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--deep-black); color: #ffffff; margin: 0; overflow-x: hidden; }
+        .header-gradient { background: linear-gradient(180deg, var(--dark-green) 0%, var(--deep-black) 100%); border-bottom: 1px solid rgba(197, 160, 33, 0.2); }
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
         .modal.active { display: flex; }
         .admin-panel { display: none; }
         .admin-panel.active { display: block; }
         .user-view.hidden { display: none; }
+        #loading-screen { position: fixed; inset: 0; background: black; z-index: 999; display: flex; align-items: center; justify-content: center; flex-direction: column; }
 
         .gold-text { color: var(--gold); }
         .gold-border { border-color: var(--gold); }
-        .gold-button {
-            background: linear-gradient(135deg, #C5A021 0%, #8E7014 100%);
-            color: #000000;
-            border: none;
-        }
+        .gold-button { background: linear-gradient(135deg, #C5A021 0%, #8E7014 100%); color: #000000; border: none; transition: 0.3s; }
+        .gold-button:hover { transform: scale(1.05); }
 
-        .admin-input {
-            width: 100%;
-            padding: 0.85rem;
-            border: 1px solid #1A2E28;
-            border-radius: 1rem;
-            margin-top: 0.25rem;
-            background-color: #050A09;
-            color: #ffffff;
-            outline: none;
-        }
-        .admin-label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
+        .admin-input { width: 100%; padding: 0.85rem; border: 1px solid #1A2E28; border-radius: 1rem; margin-top: 0.25rem; background-color: #050A09; color: #ffffff; outline: none; }
+        .admin-label { font-size: 0.65rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; }
 
         h1, h2, .font-luxury { font-family: 'Playfair Display', serif; }
+        .food-card { background: var(--card-bg); border: 1px solid rgba(197, 160, 33, 0.08); transition: 0.4s ease; border-radius: 24px; overflow: hidden; }
 
-        .food-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(197, 160, 33, 0.08);
-            transition: all 0.4s ease;
-            border-radius: 24px;
-            overflow: hidden;
-        }
-
-        .category-container {
-            display: flex;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            gap: 0.75rem;
-            padding: 0.5rem;
-        }
+        .category-container { display: flex; overflow-x: auto; scrollbar-width: none; gap: 0.75rem; padding: 0.5rem; }
         .category-container::-webkit-scrollbar { display: none; }
-
-        .category-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(197, 160, 33, 0.15);
-            color: #888;
-            white-space: nowrap;
-            padding: 0.75rem 1.5rem;
-            border-radius: 1rem;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-        .category-btn.active {
-            background: var(--gold);
-            color: #000;
-            border-color: var(--gold);
-        }
+        .category-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(197, 160, 33, 0.15); color: #888; white-space: nowrap; padding: 0.75rem 1.5rem; border-radius: 1rem; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .category-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
     </style>
 </head>
 <body>
+
+    <div id="loading-screen">
+        <h1 class="gold-text text-4xl font-luxury animate-pulse">OQTOSH</h1>
+        <p class="text-gray-500 text-xs tracking-widest mt-4 uppercase">Yuklanmoqda...</p>
+    </div>
 
     <!-- Admin Login Modal -->
     <div id="login-modal" class="modal">
@@ -107,22 +57,20 @@
                     <button onclick="checkPin()" class="flex-1 py-3 gold-button rounded-2xl font-bold">Kirish</button>
                 </div>
             </div>
-            <p id="login-error" class="text-red-500 text-xs mt-4 text-center hidden">Xato!</p>
         </div>
     </div>
 
     <!-- User View -->
     <div id="user-view" class="user-view">
         <header class="header-gradient text-white pt-6 pb-16 px-4 md:px-12 rounded-b-[40px] md:rounded-b-[80px]">
-            <div class="max-w-6xl mx-auto">
-                <div class="flex justify-end mb-8 opacity-0"><span class="text-[8px]">v1.0.8</span></div>
+            <div class="max-w-6xl mx-auto text-center md:text-left">
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                     <div class="w-40 h-40 md:w-52 md:h-52 rounded-full border-2 border-[#C5A021]/30 overflow-hidden bg-black p-2 shadow-2xl">
-                        <img id="display-logo" src="" alt="OQTOSH" class="w-full h-full object-contain">
+                        <img id="display-logo" src="" alt="Logo" class="w-full h-full object-contain">
                     </div>
-                    <div class="text-center md:text-left">
-                        <h1 id="display-name" class="text-4xl md:text-7xl font-bold mb-3 gold-text uppercase tracking-widest">OQTOSH</h1>
-                        <p id="display-description" class="text-gray-400 mb-8 max-w-xl text-sm md:text-lg font-light italic"></p>
+                    <div class="flex-1">
+                        <h1 id="display-name" class="text-4xl md:text-7xl font-bold mb-3 gold-text uppercase tracking-widest"></h1>
+                        <p id="display-description" class="text-gray-400 mb-8 max-w-xl text-sm md:text-lg font-light italic mx-auto md:mx-0"></p>
                         <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
                             <a id="phone-link" href="#" class="flex items-center gap-2 text-xs md:text-sm hover:gold-text transition-colors">
                                 <div class="p-2 rounded-full bg-[#C5A021]/10 gold-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -139,7 +87,7 @@
         </header>
 
         <main class="max-w-7xl mx-auto px-4 -mt-8">
-            <div class="bg-[#050A09]/90 backdrop-blur-xl p-6 md:p-10 rounded-[32px] border border-white/5 shadow-2xl mb-12">
+            <div class="bg-[#050A09]/95 backdrop-blur-xl p-6 md:p-10 rounded-[32px] border border-white/5 shadow-2xl mb-12">
                 <div class="relative mb-8 max-w-2xl mx-auto">
                     <input type="text" id="search-input" placeholder="Taomlarni izlash..." class="w-full py-4 px-12 rounded-2xl border border-white/10 bg-black/40 text-white outline-none focus:border-[#C5A021]/50 transition-all" oninput="renderMenu()">
                     <svg class="absolute left-4 top-1/2 -translate-y-1/2 gold-text opacity-50" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -152,7 +100,6 @@
 
         <footer class="bg-black border-t border-white/5 py-16 px-4 text-center">
             <h2 id="footer-name" class="text-2xl md:text-4xl font-bold mb-4 gold-text uppercase tracking-widest font-luxury"></h2>
-            <p id="footer-description" class="text-gray-500 mb-8 max-w-md mx-auto text-xs italic font-light"></p>
             <div onclick="secretClick()" class="text-[#111] text-[10px] uppercase tracking-[0.3em] font-bold py-4 cursor-default">
                 © 2024 <span id="footer-copy"></span> • Exclusive Restaurant
             </div>
@@ -163,45 +110,50 @@
     <div id="admin-panel" class="admin-panel min-h-screen bg-black p-4 md:p-10">
         <div class="max-w-6xl mx-auto">
             <div class="flex justify-between items-center mb-8 bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                <h1 class="text-xl font-bold gold-text font-luxury uppercase tracking-widest">Admin Dashboard</h1>
+                <h1 class="text-xl font-bold gold-text font-luxury uppercase tracking-widest">Dashboard</h1>
                 <div class="flex gap-2">
-                    <button onclick="saveAndExit()" class="gold-button px-6 py-2 rounded-xl text-xs font-bold">Saqlash</button>
-                    <button onclick="logout()" class="bg-[#111] px-6 py-2 rounded-xl text-xs text-gray-400 border border-white/5 font-bold">Chiqish</button>
+                    <button onclick="saveSiteInfo()" class="gold-button px-6 py-2 rounded-xl text-xs font-bold">Saqlash</button>
+                    <button onclick="logout()" class="bg-[#111] px-6 py-2 rounded-xl text-xs text-gray-400 border border-white/5 font-bold">Yopish</button>
                 </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Settings -->
                 <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                    <h3 class="text-xs font-bold mb-6 gold-text uppercase pb-3">Ma'lumotlar</h3>
+                    <h3 class="text-xs font-bold mb-6 gold-text uppercase tracking-widest border-b border-white/5 pb-3">Ma'lumotlar</h3>
                     <div class="space-y-4">
                         <input id="admin-name" class="admin-input" placeholder="Restoran nomi">
                         <textarea id="admin-description" class="admin-input h-24 text-xs" placeholder="Tavsif"></textarea>
                         <input id="admin-phone" class="admin-input" placeholder="Telefon">
                         <input id="admin-address" class="admin-input" placeholder="Manzil">
                         <input type="file" id="logo-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'logo')">
-                        <button onclick="document.getElementById('logo-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] gold-text">Logo Yuklash</button>
+                        <button onclick="document.getElementById('logo-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] gold-text mt-1">Logo Yuklash</button>
                         <div class="mt-3 p-2 bg-black rounded-2xl flex justify-center"><img id="admin-logo-preview" class="h-20 object-contain" src=""></div>
                     </div>
                 </div>
+                <!-- Menu -->
                 <div class="lg:col-span-2 space-y-6">
                     <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
                         <h3 class="text-xs font-bold mb-4 gold-text uppercase">Kategoriyalar</h3>
                         <div id="admin-categories-list" class="flex flex-wrap gap-2 mb-4"></div>
-                        <div class="flex gap-2"><input id="new-category-name" placeholder="Nomi..." class="admin-input flex-1 mt-0"><button onclick="addCategory()" class="gold-button px-6 py-2 rounded-xl font-bold text-xs">Qo'shish</button></div>
+                        <div class="flex gap-2">
+                            <input id="new-category-name" placeholder="Nomi..." class="admin-input flex-1 mt-0">
+                            <button onclick="addCategory()" class="gold-button px-6 py-2 rounded-xl font-bold text-xs">Qo'shish</button>
+                        </div>
                     </div>
                     <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                        <h3 class="text-xs font-bold mb-6 gold-text uppercase">Yangi Taom</h3>
+                        <h3 class="text-xs font-bold mb-6 gold-text uppercase">Yangi Taom Qo'shish</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
-                                <input id="food-name" placeholder="Taom nomi" class="admin-input">
+                                <input id="food-name" placeholder="Nomi" class="admin-input">
                                 <input id="food-price" placeholder="Narxi" class="admin-input">
                                 <select id="food-category" class="admin-input text-xs"></select>
                             </div>
-                            <div class="space-y-4">
+                            <div>
                                 <input type="file" id="food-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'food')">
                                 <button onclick="document.getElementById('food-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] gold-text">Rasm Yuklash</button>
-                                <img id="admin-food-preview" class="mt-2 w-full h-32 object-cover rounded-xl" src="">
+                                <img id="admin-food-preview" class="mt-2 w-full h-32 object-cover rounded-xl border border-white/5" src="">
                             </div>
-                            <button onclick="addFood()" class="md:col-span-2 py-4 gold-button rounded-xl font-bold text-xs">QO'SHISH</button>
+                            <button onclick="addFood()" class="md:col-span-2 py-4 gold-button rounded-xl font-bold text-xs">SAQLASH VA QO'SHISH</button>
                         </div>
                     </div>
                     <div id="admin-food-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
@@ -228,32 +180,29 @@
         const db = getDatabase(app);
         const dbRef = ref(db, 'menyuData');
 
-        const defaultData = {
+        window.data = {
             name: "OQTOSH",
-            description: "Family Restaurant — O'zbekistondagi eng premium taomlar maskani.",
+            description: "Family Restaurant — Premium taomlar maskani.",
             phone: "+998 90 123 45 67",
-            address: "Toshkent, Amir Temur ko'chasi 45",
+            address: "Toshkent",
             logo: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
             categories: ["Milliy Taomlar", "Issiq Taomlar"],
             menuItems: []
         };
 
-        window.data = defaultData;
         let activeCategory = "Hammasi", tempLogo = "", tempFoodImage = "", clickCount = 0, lastClickTime = 0;
 
-        // Sync with Firebase
+        const updateFirebase = () => set(dbRef, window.data);
+
         onValue(dbRef, (snapshot) => {
             const fbData = snapshot.val();
             if (fbData) {
                 window.data = fbData;
                 window.renderAll();
             } else {
-                console.log("Baza bo'sh, default yuklanmoqda...");
-                set(dbRef, defaultData);
+                updateFirebase();
             }
-        }, (error) => {
-            console.error("Firebase xatosi:", error);
-            alert("Firebase-ga ulanishda xato! Rules (Qoidalar)ni tekshiring.");
+            document.getElementById('loading-screen').style.display = 'none';
         });
 
         window.secretClick = () => {
@@ -280,28 +229,23 @@
             document.getElementById('admin-panel').classList.remove('active');
         };
 
-        window.saveAndExit = () => {
-            data.name = document.getElementById('admin-name').value;
-            data.description = document.getElementById('admin-description').value;
-            data.phone = document.getElementById('admin-phone').value;
-            data.address = document.getElementById('admin-address').value;
-            if(tempLogo) data.logo = tempLogo;
-
-            set(dbRef, window.data)
-                .then(() => { alert("Saqlandi!"); window.logout(); })
-                .catch((e) => { console.error(e); alert("Xato: " + e.message); });
+        window.saveSiteInfo = () => {
+            window.data.name = document.getElementById('admin-name').value;
+            window.data.description = document.getElementById('admin-description').value;
+            window.data.phone = document.getElementById('admin-phone').value;
+            window.data.address = document.getElementById('admin-address').value;
+            if(tempLogo) window.data.logo = tempLogo;
+            updateFirebase().then(() => alert("Saqlandi!"));
         };
 
         window.renderAll = () => {
             const d = window.data;
-            document.getElementById('page-title').innerText = d.name;
             document.getElementById('display-name').innerText = d.name;
-            document.getElementById('display-description').innerText = d.description;
+            document.getElementById('display-description').innerText = d.description || "";
             document.getElementById('display-phone').innerText = d.phone;
             document.getElementById('display-address').innerText = d.address;
             document.getElementById('display-logo').src = d.logo;
             document.getElementById('footer-name').innerText = d.name;
-            document.getElementById('footer-description').innerText = d.description;
             document.getElementById('footer-copy').innerText = d.name;
             document.getElementById('phone-link').href = `tel:${d.phone.replace(/\s+/g, '')}`;
             document.getElementById('address-link').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.address)}`;
@@ -319,7 +263,7 @@
 
         window.setCategory = (cat) => { activeCategory = cat; renderMenu(); renderCategories(); };
 
-        const renderMenu = () => {
+        window.renderMenu = () => {
             const search = document.getElementById('search-input').value.toLowerCase();
             const container = document.getElementById('food-grid');
             let filtered = (window.data.menuItems || []).filter(item => {
@@ -340,11 +284,10 @@
         window.initAdmin = () => {
             const d = window.data;
             document.getElementById('admin-name').value = d.name;
-            document.getElementById('admin-description').value = d.description;
+            document.getElementById('admin-description').value = d.description || "";
             document.getElementById('admin-phone').value = d.phone;
             document.getElementById('admin-address').value = d.address;
             document.getElementById('admin-logo-preview').src = d.logo;
-            tempLogo = d.logo;
             renderAdminCategories(); renderAdminFoods(); updateAdminSelects();
         };
 
@@ -371,18 +314,20 @@
 
         window.addCategory = () => {
             const val = document.getElementById('new-category-name').value.trim();
-            if(val && !window.data.categories.includes(val)) {
+            if(val) {
                 if(!window.data.categories) window.data.categories = [];
-                window.data.categories.push(val);
-                document.getElementById('new-category-name').value = "";
-                renderAdminCategories(); updateAdminSelects();
+                if(!window.data.categories.includes(val)) {
+                    window.data.categories.push(val);
+                    document.getElementById('new-category-name').value = "";
+                    updateFirebase().then(() => { renderAdminCategories(); updateAdminSelects(); });
+                }
             }
         };
 
         window.deleteCategory = (cat) => {
             if(confirm("O'chirilsinmi?")) {
                 window.data.categories = window.data.categories.filter(c => c !== cat);
-                renderAdminCategories(); updateAdminSelects();
+                updateFirebase().then(() => { renderAdminCategories(); updateAdminSelects(); });
             }
         };
 
@@ -393,16 +338,22 @@
 
         window.addFood = () => {
             const name = document.getElementById('food-name').value, price = document.getElementById('food-price').value;
-            if(!name || !price) { alert("Xato!"); return; }
+            if(!name || !price) { alert("Nom va narxni kiriting!"); return; }
             if(!window.data.menuItems) window.data.menuItems = [];
             window.data.menuItems.push({ id: Date.now(), name, price, category: document.getElementById('food-category').value, image: tempFoodImage || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80' });
-            renderAdminFoods();
-            document.getElementById('food-name').value = ""; document.getElementById('food-price').value = "";
-            document.getElementById('admin-food-preview').src = ""; tempFoodImage = "";
+            updateFirebase().then(() => {
+                renderAdminFoods();
+                document.getElementById('food-name').value = ""; document.getElementById('food-price').value = "";
+                document.getElementById('admin-food-preview').src = ""; tempFoodImage = "";
+                alert("Taom qo'shildi!");
+            });
         };
 
         window.deleteFood = (id) => {
-            if(confirm("O'chirilsinmi?")) { window.data.menuItems = window.data.menuItems.filter(i => i.id !== id); renderAdminFoods(); }
+            if(confirm("O'chirilsinmi?")) {
+                window.data.menuItems = window.data.menuItems.filter(i => i.id !== id);
+                updateFirebase().then(() => renderAdminFoods());
+            }
         };
 
         const renderAdminFoods = () => {
@@ -415,9 +366,6 @@
                 </div>
             `).join('');
         };
-
-        // Initial render
-        window.renderAll();
     </script>
 </body>
 </html>
