@@ -63,6 +63,7 @@
             border: 1px solid rgba(197, 160, 33, 0.08);
             transition: all 0.4s ease;
             border-radius: 24px;
+            overflow: hidden;
         }
 
         .category-container {
@@ -90,7 +91,6 @@
             background: var(--gold);
             color: #000;
             border-color: var(--gold);
-            box-shadow: 0 5px 15px rgba(197, 160, 33, 0.3);
         }
     </style>
 </head>
@@ -115,31 +115,22 @@
     <div id="user-view" class="user-view">
         <header class="header-gradient text-white pt-6 pb-16 px-4 md:px-12 rounded-b-[40px] md:rounded-b-[80px]">
             <div class="max-w-6xl mx-auto">
-                <div class="flex justify-end mb-8 opacity-0">
-                    <span class="text-[8px]">v1.0.6</span>
-                </div>
-
+                <div class="flex justify-end mb-8 opacity-0"><span class="text-[8px]">v1.0.8</span></div>
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                    <div class="relative">
-                        <div class="w-40 h-40 md:w-52 md:h-56 rounded-full border-2 border-[#C5A021]/30 overflow-hidden bg-black p-2">
-                            <img id="display-logo" src="" alt="Logo" class="w-full h-full object-contain">
-                        </div>
+                    <div class="w-40 h-40 md:w-52 md:h-52 rounded-full border-2 border-[#C5A021]/30 overflow-hidden bg-black p-2 shadow-2xl">
+                        <img id="display-logo" src="" alt="OQTOSH" class="w-full h-full object-contain">
                     </div>
                     <div class="text-center md:text-left">
-                        <h1 id="display-name" class="text-4xl md:text-7xl font-bold mb-3 gold-text uppercase tracking-widest"></h1>
+                        <h1 id="display-name" class="text-4xl md:text-7xl font-bold mb-3 gold-text uppercase tracking-widest">OQTOSH</h1>
                         <p id="display-description" class="text-gray-400 mb-8 max-w-xl text-sm md:text-lg font-light italic"></p>
-                        <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 md:gap-6">
-                            <a id="phone-link" href="#" class="flex items-center gap-2 text-xs md:text-sm hover:gold-text transition-colors group">
-                                <div class="p-2 rounded-full bg-[#C5A021]/10 gold-text group-hover:bg-[#C5A021]/20 transition-all">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                </div>
-                                <span id="display-phone" class="font-medium tracking-wider"></span>
+                        <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
+                            <a id="phone-link" href="#" class="flex items-center gap-2 text-xs md:text-sm hover:gold-text transition-colors">
+                                <div class="p-2 rounded-full bg-[#C5A021]/10 gold-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                                <span id="display-phone"></span>
                             </a>
-                            <a id="address-link" href="#" target="_blank" class="flex items-center gap-2 text-xs md:text-sm hover:gold-text transition-colors group">
-                                <div class="p-2 rounded-full bg-[#C5A021]/10 gold-text group-hover:bg-[#C5A021]/20 transition-all">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                                </div>
-                                <span id="display-address" class="font-medium tracking-wider"></span>
+                            <a id="address-link" href="#" target="_blank" class="flex items-center gap-2 text-xs md:text-sm hover:gold-text transition-colors">
+                                <div class="p-2 rounded-full bg-[#C5A021]/10 gold-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                                <span id="display-address"></span>
                             </a>
                         </div>
                     </div>
@@ -150,21 +141,20 @@
         <main class="max-w-7xl mx-auto px-4 -mt-8">
             <div class="bg-[#050A09]/90 backdrop-blur-xl p-6 md:p-10 rounded-[32px] border border-white/5 shadow-2xl mb-12">
                 <div class="relative mb-8 max-w-2xl mx-auto">
-                    <input type="text" id="search-input" placeholder="Taomlarni izlash..." class="w-full py-4 px-12 rounded-2xl border border-white/10 bg-black/40 text-white outline-none focus:border-[#C5A021]/50 transition-all text-sm md:text-base" oninput="renderMenu()">
+                    <input type="text" id="search-input" placeholder="Taomlarni izlash..." class="w-full py-4 px-12 rounded-2xl border border-white/10 bg-black/40 text-white outline-none focus:border-[#C5A021]/50 transition-all" oninput="renderMenu()">
                     <svg class="absolute left-4 top-1/2 -translate-y-1/2 gold-text opacity-50" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 </div>
                 <div id="category-filters" class="category-container justify-start md:justify-center"></div>
             </div>
-
             <h2 class="text-center text-3xl md:text-5xl font-bold mb-12 gold-text uppercase tracking-widest font-luxury">Menyu</h2>
             <div id="food-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 mb-24"></div>
         </main>
 
         <footer class="bg-black border-t border-white/5 py-16 px-4 text-center">
             <h2 id="footer-name" class="text-2xl md:text-4xl font-bold mb-4 gold-text uppercase tracking-widest font-luxury"></h2>
-            <p id="footer-description" class="text-gray-500 mb-8 max-w-md mx-auto text-xs md:text-sm italic font-light"></p>
-            <div onclick="secretClick()" class="text-[#111] text-[10px] uppercase tracking-[0.3em] font-bold py-4">
-                © 2024 <span id="footer-copy"></span> • <span class="hover:text-gold/10">Exclusive Restaurant</span>
+            <p id="footer-description" class="text-gray-500 mb-8 max-w-md mx-auto text-xs italic font-light"></p>
+            <div onclick="secretClick()" class="text-[#111] text-[10px] uppercase tracking-[0.3em] font-bold py-4 cursor-default">
+                © 2024 <span id="footer-copy"></span> • Exclusive Restaurant
             </div>
         </footer>
     </div>
@@ -172,70 +162,54 @@
     <!-- Admin Panel -->
     <div id="admin-panel" class="admin-panel min-h-screen bg-black p-4 md:p-10">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-[#050A09] p-6 rounded-3xl border border-white/5">
+            <div class="flex justify-between items-center mb-8 bg-[#050A09] p-6 rounded-3xl border border-white/5">
                 <h1 class="text-xl font-bold gold-text font-luxury uppercase tracking-widest">Admin Dashboard</h1>
-                <div class="flex gap-2 w-full md:w-auto">
-                    <button onclick="saveAndExit()" class="gold-button flex-1 md:flex-none px-6 py-2 rounded-xl text-xs font-bold">Saqlash</button>
-                    <button onclick="logout()" class="bg-[#111] px-6 py-2 rounded-xl text-xs text-gray-400 font-bold border border-white/5">Chiqish</button>
+                <div class="flex gap-2">
+                    <button onclick="saveAndExit()" class="gold-button px-6 py-2 rounded-xl text-xs font-bold">Saqlash</button>
+                    <button onclick="logout()" class="bg-[#111] px-6 py-2 rounded-xl text-xs text-gray-400 border border-white/5 font-bold">Chiqish</button>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                    <h3 class="text-sm font-bold mb-6 gold-text uppercase tracking-widest border-b border-white/5 pb-3">Restoran Ma'lumotlari</h3>
+                    <h3 class="text-xs font-bold mb-6 gold-text uppercase pb-3">Ma'lumotlar</h3>
                     <div class="space-y-4">
-                        <div><label class="admin-label">Nomi</label><input id="admin-name" class="admin-input"></div>
-                        <div><label class="admin-label">Tavsif</label><textarea id="admin-description" class="admin-input h-24 text-xs"></textarea></div>
-                        <div><label class="admin-label">Telefon</label><input id="admin-phone" class="admin-input"></div>
-                        <div><label class="admin-label">Manzil</label><input id="admin-address" class="admin-input"></div>
-                        <div>
-                            <label class="admin-label">Logo</label>
-                            <input type="file" id="logo-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'logo')">
-                            <button onclick="document.getElementById('logo-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] font-bold gold-text mt-1">Logo Yuklash</button>
-                            <div class="mt-3 p-2 bg-black rounded-2xl flex justify-center"><img id="admin-logo-preview" class="h-20 object-contain" src=""></div>
-                        </div>
+                        <input id="admin-name" class="admin-input" placeholder="Restoran nomi">
+                        <textarea id="admin-description" class="admin-input h-24 text-xs" placeholder="Tavsif"></textarea>
+                        <input id="admin-phone" class="admin-input" placeholder="Telefon">
+                        <input id="admin-address" class="admin-input" placeholder="Manzil">
+                        <input type="file" id="logo-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'logo')">
+                        <button onclick="document.getElementById('logo-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] gold-text">Logo Yuklash</button>
+                        <div class="mt-3 p-2 bg-black rounded-2xl flex justify-center"><img id="admin-logo-preview" class="h-20 object-contain" src=""></div>
                     </div>
                 </div>
-
                 <div class="lg:col-span-2 space-y-6">
                     <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                        <h3 class="text-sm font-bold mb-4 gold-text uppercase tracking-widest border-b border-white/5 pb-3">Kategoriyalar</h3>
+                        <h3 class="text-xs font-bold mb-4 gold-text uppercase">Kategoriyalar</h3>
                         <div id="admin-categories-list" class="flex flex-wrap gap-2 mb-4"></div>
-                        <div class="flex gap-2">
-                            <input id="new-category-name" placeholder="Nomi..." class="admin-input flex-1 mt-0">
-                            <button onclick="addCategory()" class="gold-button px-6 py-2 rounded-xl font-bold text-xs">Qo'shish</button>
-                        </div>
+                        <div class="flex gap-2"><input id="new-category-name" placeholder="Nomi..." class="admin-input flex-1 mt-0"><button onclick="addCategory()" class="gold-button px-6 py-2 rounded-xl font-bold text-xs">Qo'shish</button></div>
                     </div>
-
                     <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                        <h3 class="text-sm font-bold mb-6 gold-text uppercase tracking-widest border-b border-white/5 pb-3">Yangi Taom</h3>
+                        <h3 class="text-xs font-bold mb-6 gold-text uppercase">Yangi Taom</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
-                                <div><label class="admin-label">Nomi</label><input id="food-name" class="admin-input"></div>
-                                <div><label class="admin-label">Narxi</label><input id="food-price" class="admin-input"></div>
-                                <div><label class="admin-label">Kategoriya</label><select id="food-category" class="admin-input text-xs"></select></div>
+                                <input id="food-name" placeholder="Taom nomi" class="admin-input">
+                                <input id="food-price" placeholder="Narxi" class="admin-input">
+                                <select id="food-category" class="admin-input text-xs"></select>
                             </div>
                             <div class="space-y-4">
-                                <div><label class="admin-label">Rasm</label>
-                                    <input type="file" id="food-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'food')">
-                                    <button onclick="document.getElementById('food-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] font-bold gold-text">Rasm Yuklash</button>
-                                    <img id="admin-food-preview" class="mt-2 w-full h-32 object-cover rounded-xl border border-white/5 shadow-lg" src="">
-                                </div>
+                                <input type="file" id="food-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'food')">
+                                <button onclick="document.getElementById('food-upload').click()" class="w-full py-3 bg-black/40 border border-dashed border-[#C5A021]/30 rounded-xl text-[10px] gold-text">Rasm Yuklash</button>
+                                <img id="admin-food-preview" class="mt-2 w-full h-32 object-cover rounded-xl" src="">
                             </div>
-                            <button onclick="addFood()" class="md:col-span-2 py-4 gold-button rounded-xl font-bold text-xs tracking-widest">TAOMNI QO'SHISH</button>
+                            <button onclick="addFood()" class="md:col-span-2 py-4 gold-button rounded-xl font-bold text-xs">QO'SHISH</button>
                         </div>
                     </div>
-
-                    <div class="bg-[#050A09] p-6 rounded-3xl border border-white/5">
-                        <h3 class="text-sm font-bold mb-6 gold-text uppercase tracking-widest border-b border-white/5 pb-3">Taomlar Ro'yxati</h3>
-                        <div id="admin-food-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
-                    </div>
+                    <div id="admin-food-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -243,6 +217,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyDCzEWcQgUByxmqcSeANHg2CXyIbxrlnX0",
             authDomain: "oqtosh-menu.firebaseapp.com",
+            databaseURL: "https://oqtosh-menu-default-rtdb.firebaseio.com",
             projectId: "oqtosh-menu",
             storageBucket: "oqtosh-menu.firebasestorage.app",
             messagingSenderId: "419490536594",
@@ -253,57 +228,56 @@
         const db = getDatabase(app);
         const dbRef = ref(db, 'menyuData');
 
-        window.data = {
+        const defaultData = {
             name: "OQTOSH",
-            description: "Family Restaurant — O'zbekistondagi eng premium va an'anaviy taomlar maskani.",
+            description: "Family Restaurant — O'zbekistondagi eng premium taomlar maskani.",
             phone: "+998 90 123 45 67",
             address: "Toshkent, Amir Temur ko'chasi 45",
             logo: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
-            categories: ["Milliy Taomlar", "Issiq Taomlar", "Salatlar"],
+            categories: ["Milliy Taomlar", "Issiq Taomlar"],
             menuItems: []
         };
 
-        let activeCategory = "Hammasi";
-        let tempLogo = "";
-        let tempFoodImage = "";
-        let clickCount = 0;
-        let lastClickTime = 0;
+        window.data = defaultData;
+        let activeCategory = "Hammasi", tempLogo = "", tempFoodImage = "", clickCount = 0, lastClickTime = 0;
 
+        // Sync with Firebase
         onValue(dbRef, (snapshot) => {
             const fbData = snapshot.val();
             if (fbData) {
                 window.data = fbData;
-                renderAll();
+                window.renderAll();
             } else {
-                set(dbRef, window.data);
+                console.log("Baza bo'sh, default yuklanmoqda...");
+                set(dbRef, defaultData);
             }
+        }, (error) => {
+            console.error("Firebase xatosi:", error);
+            alert("Firebase-ga ulanishda xato! Rules (Qoidalar)ni tekshiring.");
         });
 
-        const syncToFirebase = () => set(dbRef, window.data);
-
-        window.secretClick = function() {
-            const currentTime = new Date().getTime();
-            if (currentTime - lastClickTime < 1000) { clickCount++; } else { clickCount = 1; }
-            lastClickTime = currentTime;
-            if (clickCount >= 5) { openModal('login-modal'); clickCount = 0; }
+        window.secretClick = () => {
+            const now = Date.now();
+            if (now - lastClickTime < 1000) clickCount++; else clickCount = 1;
+            lastClickTime = now;
+            if (clickCount >= 5) { window.openModal('login-modal'); clickCount = 0; }
         };
 
-        window.openModal = (id) => document.getElementById(id).classList.add('active');
-        window.closeModal = (id) => document.getElementById(id).classList.remove('active');
+        window.openModal = (id) => document.getElementById(id).style.display = 'flex';
+        window.closeModal = (id) => document.getElementById(id).style.display = 'none';
 
         window.checkPin = () => {
             if(document.getElementById('pin-input').value === "0000") {
                 document.getElementById('user-view').classList.add('hidden');
                 document.getElementById('admin-panel').classList.add('active');
-                closeModal('login-modal');
-                initAdmin();
-            } else { document.getElementById('login-error').classList.remove('hidden'); }
+                window.closeModal('login-modal');
+                window.initAdmin();
+            } else alert("Xato PIN!");
         };
 
         window.logout = () => {
             document.getElementById('user-view').classList.remove('hidden');
             document.getElementById('admin-panel').classList.remove('active');
-            document.getElementById('pin-input').value = "";
         };
 
         window.saveAndExit = () => {
@@ -312,32 +286,32 @@
             data.phone = document.getElementById('admin-phone').value;
             data.address = document.getElementById('admin-address').value;
             if(tempLogo) data.logo = tempLogo;
-            syncToFirebase().then(() => logout());
+
+            set(dbRef, window.data)
+                .then(() => { alert("Saqlandi!"); window.logout(); })
+                .catch((e) => { console.error(e); alert("Xato: " + e.message); });
         };
 
         window.renderAll = () => {
-            document.getElementById('page-title').innerText = data.name;
-            document.getElementById('display-name').innerText = data.name;
-            document.getElementById('display-description').innerText = data.description;
-            document.getElementById('display-phone').innerText = data.phone;
-            document.getElementById('display-address').innerText = data.address;
-            document.getElementById('display-logo').src = data.logo;
-            document.getElementById('footer-name').innerText = data.name;
-            document.getElementById('footer-description').innerText = data.description;
-            document.getElementById('footer-copy').innerText = data.name;
-
-            // Update interactive links
-            document.getElementById('phone-link').href = `tel:${data.phone.replace(/\s+/g, '')}`;
-            document.getElementById('address-link').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.address)}`;
-
-            renderCategories();
-            renderMenu();
+            const d = window.data;
+            document.getElementById('page-title').innerText = d.name;
+            document.getElementById('display-name').innerText = d.name;
+            document.getElementById('display-description').innerText = d.description;
+            document.getElementById('display-phone').innerText = d.phone;
+            document.getElementById('display-address').innerText = d.address;
+            document.getElementById('display-logo').src = d.logo;
+            document.getElementById('footer-name').innerText = d.name;
+            document.getElementById('footer-description').innerText = d.description;
+            document.getElementById('footer-copy').innerText = d.name;
+            document.getElementById('phone-link').href = `tel:${d.phone.replace(/\s+/g, '')}`;
+            document.getElementById('address-link').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.address)}`;
+            renderCategories(); renderMenu();
         };
 
         const renderCategories = () => {
             const container = document.getElementById('category-filters');
             let html = `<button onclick="setCategory('Hammasi')" class="category-btn ${activeCategory === 'Hammasi' ? 'active' : ''}">Hammasi</button>`;
-            data.categories.forEach(cat => {
+            (window.data.categories || []).forEach(cat => {
                 html += `<button onclick="setCategory('${cat}')" class="category-btn ${activeCategory === cat ? 'active' : ''}">${cat}</button>`;
             });
             container.innerHTML = html;
@@ -348,50 +322,39 @@
         const renderMenu = () => {
             const search = document.getElementById('search-input').value.toLowerCase();
             const container = document.getElementById('food-grid');
-            let filtered = (data.menuItems || []).filter(item => {
+            let filtered = (window.data.menuItems || []).filter(item => {
                 const matchesSearch = item.name.toLowerCase().includes(search);
                 const matchesCat = activeCategory === "Hammasi" || item.category === activeCategory;
                 return matchesSearch && matchesCat;
             });
             container.innerHTML = filtered.map(item => `
                 <div class="food-card">
-                    <div class="h-56 md:h-72 relative">
-                        <img src="${item.image}" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-xl text-[9px] font-bold gold-text border border-[#C5A021]/30 uppercase tracking-widest">${item.category}</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-white font-luxury">${item.name}</h3>
-                            <div class="text-right">
-                                <span class="text-xl font-bold gold-text">${item.price}</span>
-                                <p class="text-[8px] gold-text uppercase font-bold">so'm</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="h-52 relative"><img src="${item.image}" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded-lg text-[9px] gold-text border border-gold/30 uppercase tracking-widest">${item.category}</span></div>
+                    <div class="p-6"><div class="flex justify-between items-start mb-2"><h3 class="text-xl font-bold gold-text font-luxury">${item.name}</h3>
+                    <div class="text-right"><span class="text-lg font-bold">${item.price}</span><p class="text-[8px] opacity-50 uppercase">so'm</p></div></div></div>
                 </div>
             `).join('');
         };
 
         window.initAdmin = () => {
-            document.getElementById('admin-name').value = data.name;
-            document.getElementById('admin-description').value = data.description;
-            document.getElementById('admin-phone').value = data.phone;
-            document.getElementById('admin-address').value = data.address;
-            document.getElementById('admin-logo-preview').src = data.logo;
-            tempLogo = data.logo;
-            renderAdminCategories();
-            renderAdminFoods();
-            updateAdminSelects();
+            const d = window.data;
+            document.getElementById('admin-name').value = d.name;
+            document.getElementById('admin-description').value = d.description;
+            document.getElementById('admin-phone').value = d.phone;
+            document.getElementById('admin-address').value = d.address;
+            document.getElementById('admin-logo-preview').src = d.logo;
+            tempLogo = d.logo;
+            renderAdminCategories(); renderAdminFoods(); updateAdminSelects();
         };
 
         window.handleImageUpload = (event, target) => {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = (e) => {
                     if(target === 'logo') { tempLogo = e.target.result; document.getElementById('admin-logo-preview').src = tempLogo; }
-                    else if(target === 'food') { tempFoodImage = e.target.result; document.getElementById('admin-food-preview').src = tempFoodImage; }
+                    else { tempFoodImage = e.target.result; document.getElementById('admin-food-preview').src = tempFoodImage; }
                 };
                 reader.readAsDataURL(file);
             }
@@ -399,77 +362,62 @@
 
         const renderAdminCategories = () => {
             const container = document.getElementById('admin-categories-list');
-            container.innerHTML = data.categories.map(cat => `
-                <span class="bg-black text-[#C5A021] border border-[#C5A021]/20 px-4 py-1.5 rounded-xl text-[10px] font-medium flex items-center gap-3">
-                    ${cat}
-                    <button onclick="deleteCategory('${cat}')" class="text-red-900 font-bold">×</button>
+            container.innerHTML = (window.data.categories || []).map(cat => `
+                <span class="bg-black text-gold border border-gold/20 px-3 py-1 rounded-xl text-[10px] flex items-center gap-2">
+                    ${cat}<button onclick="deleteCategory('${cat}')" class="text-red-900 font-bold">×</button>
                 </span>
             `).join('');
         };
 
         window.addCategory = () => {
             const val = document.getElementById('new-category-name').value.trim();
-            if(val && !data.categories.includes(val)) {
-                data.categories.push(val);
+            if(val && !window.data.categories.includes(val)) {
+                if(!window.data.categories) window.data.categories = [];
+                window.data.categories.push(val);
                 document.getElementById('new-category-name').value = "";
-                renderAdminCategories();
-                updateAdminSelects();
+                renderAdminCategories(); updateAdminSelects();
             }
         };
 
         window.deleteCategory = (cat) => {
-            if(confirm(`O'chirilsinmi?`)) {
-                data.categories = data.categories.filter(c => c !== cat);
-                renderAdminCategories();
-                updateAdminSelects();
+            if(confirm("O'chirilsinmi?")) {
+                window.data.categories = window.data.categories.filter(c => c !== cat);
+                renderAdminCategories(); updateAdminSelects();
             }
         };
 
         const updateAdminSelects = () => {
             const select = document.getElementById('food-category');
-            select.innerHTML = data.categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+            select.innerHTML = (window.data.categories || []).map(cat => `<option value="${cat}">${cat}</option>`).join('');
         };
 
         window.addFood = () => {
-            const name = document.getElementById('food-name').value;
-            const price = document.getElementById('food-price').value;
+            const name = document.getElementById('food-name').value, price = document.getElementById('food-price').value;
             if(!name || !price) { alert("Xato!"); return; }
-            if(!data.menuItems) data.menuItems = [];
-            const newItem = {
-                id: Date.now(),
-                name: name,
-                price: price,
-                category: document.getElementById('food-category').value,
-                image: tempFoodImage || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80'
-            };
-            data.menuItems.push(newItem);
+            if(!window.data.menuItems) window.data.menuItems = [];
+            window.data.menuItems.push({ id: Date.now(), name, price, category: document.getElementById('food-category').value, image: tempFoodImage || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80' });
             renderAdminFoods();
-            ['food-name', 'food-price'].forEach(id => document.getElementById(id).value = "");
-            document.getElementById('admin-food-preview').src = "";
-            tempFoodImage = "";
+            document.getElementById('food-name').value = ""; document.getElementById('food-price').value = "";
+            document.getElementById('admin-food-preview').src = ""; tempFoodImage = "";
         };
 
         window.deleteFood = (id) => {
-            if(confirm("O'chirilsinmi?")) {
-                data.menuItems = data.menuItems.filter(i => i.id !== id);
-                renderAdminFoods();
-            }
+            if(confirm("O'chirilsinmi?")) { window.data.menuItems = window.data.menuItems.filter(i => i.id !== id); renderAdminFoods(); }
         };
 
         const renderAdminFoods = () => {
             const container = document.getElementById('admin-food-list');
-            if(!data.menuItems) data.menuItems = [];
-            container.innerHTML = data.menuItems.map(item => `
+            container.innerHTML = (window.data.menuItems || []).map(item => `
                 <div class="flex items-center gap-4 bg-black p-3 rounded-2xl border border-white/5">
                     <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover">
-                    <div class="flex-1 min-w-0">
-                        <p class="font-bold text-white text-[10px] truncate">${item.name}</p>
-                        <p class="text-[8px] gold-text uppercase">${item.price} so'm</p>
-                    </div>
+                    <div class="flex-1 min-w-0"><p class="font-bold text-white text-[10px] truncate">${item.name}</p><p class="text-[8px] gold-text uppercase">${item.price} so'm</p></div>
                     <button onclick="deleteFood(${item.id})" class="text-red-900 font-bold p-2">×</button>
                 </div>
             `).join('');
         };
+
+        // Initial render
+        window.renderAll();
     </script>
 </body>
 </html>
